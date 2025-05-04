@@ -1,32 +1,26 @@
 [
-  {
-    "id": 1,
-    "name": "Sunrise Early Learning Centre",
-    "cost": 7,
-    "education": 8,
-    "staff": 9,
-    "facilities": 8,
-    "reputation": 8,
-    "nqs": 9
-  },
-  {
-    "id": 2,
-    "name": "Bright Futures Preschool",
-    "cost": 6,
-    "education": 7,
-    "staff": 8,
-    "facilities": 7,
-    "reputation": 7,
-    "nqs": 8
-  },
-  {
-    "id": 3,
-    "name": "Little Explorers Academy",
-    "cost": 8,
-    "education": 9,
-    "staff": 8,
-    "facilities": 9,
-    "reputation": 9,
-    "nqs": 10
-  }
+  {"name": "Westbourne Amici", "cost": 5, "education": 5, "staff": 5, "facilities": 5, "reputation": 5, "nqs": 5, "address": "300 Parker St, Williamstown VIC 3016", "lat": -37.8596, "lng": 144.8876},
+  {"name": "OAC Williamstown", "cost": 3, "education": 5, "staff": 5, "facilities": 5, "reputation": 5, "nqs": 5, "address": "1 Thompson St, Williamstown VIC 3016", "lat": -37.8625, "lng": 144.8924},
+  {"name": "Clare Court ELC", "cost": 4, "education": 5, "staff": 5, "facilities": 4, "reputation": 5, "nqs": 5, "address": "14 Clare St, Yarraville VIC 3013", "lat": -37.8187, "lng": 144.8859},
+  {"name": "St Michael's Grammar ELC", "cost": 2, "education": 5, "staff": 5, "facilities": 5, "reputation": 5, "nqs": 5, "address": "25 Chapel St, St Kilda VIC 3182", "lat": -37.8603, "lng": 144.9785},
+  {"name": "Wesley ECLC", "cost": 2, "education": 5, "staff": 5, "facilities": 5, "reputation": 5, "nqs": 5, "address": "577 St Kilda Rd, Melbourne VIC 3004", "lat": -37.8467, "lng": 144.9832},
+  {"name": "Home Road Kindergarten", "cost": 5, "education": 4, "staff": 5, "facilities": 3, "reputation": 5, "nqs": 5, "address": "1 Home Rd, Newport VIC 3015", "lat": -37.8378, "lng": 144.8817},
+  {"name": "Emma McLean", "cost": 5, "education": 4, "staff": 5, "facilities": 3, "reputation": 5, "nqs": 5, "address": "315 Hall St, Spotswood VIC 3015", "lat": -37.8294, "lng": 144.8873},
+  {"name": "South Kingsville Preschool", "cost": 5, "education": 4, "staff": 5, "facilities": 3, "reputation": 5, "nqs": 5, "address": "43 Paxton St, South Kingsville VIC 3015", "lat": -37.8299, "lng": 144.8807},
+  {"name": "Explorers Williamstown", "cost": 4, "education": 5, "staff": 4, "facilities": 5, "reputation": 4, "nqs": 5, "address": "15-17 Kororoit Creek Rd, Williamstown VIC 3016", "lat": -37.8592, "lng": 144.8887},
+  {"name": "Newport Lakes", "cost": 4, "education": 4, "staff": 5, "facilities": 4, "reputation": 5, "nqs": 5, "address": "1 Blackshaws Rd, Newport VIC 3015", "lat": -37.8361, "lng": 144.8774},
+  {"name": "Haileybury City ELC", "cost": 1, "education": 5, "staff": 5, "facilities": 5, "reputation": 5, "nqs": 5, "address": "383 King St, West Melbourne VIC 3003", "lat": -37.8096, "lng": 144.9502},
+  {"name": "OAC Newport", "cost": 2, "education": 5, "staff": 5, "facilities": 5, "reputation": 4, "nqs": 4, "address": "8-10 Hall St, Newport VIC 3015", "lat": -37.8340, "lng": 144.8806},
+  {"name": "Learning Sanctuary Spotswood", "cost": 3, "education": 4, "staff": 4, "facilities": 5, "reputation": 5, "nqs": 4, "address": "61 Hudsons Rd, Spotswood VIC 3015", "lat": -37.8291, "lng": 144.8892},
+  {"name": "Eden Academy Newport", "cost": 4, "education": 4, "staff": 4, "facilities": 4, "reputation": 5, "nqs": 4, "address": "2 Market St, Newport VIC 3015", "lat": -37.8415, "lng": 144.8808},
+  {"name": "Newport Gardens", "cost": 4, "education": 4, "staff": 4, "facilities": 4, "reputation": 4, "nqs": 4, "address": "51 Maddox Rd, Newport VIC 3015", "lat": -37.8362, "lng": 144.8694},
+  {"name": "The Range Children's", "cost": 5, "education": 3, "staff": 4, "facilities": 3, "reputation": 5, "nqs": 4, "address": "15 The Range, Williamstown VIC 3016", "lat": -37.8526, "lng": 144.8877},
+  {"name": "Guardian Maidstone", "cost": 2, "education": 4, "staff": 4, "facilities": 4, "reputation": 4, "nqs": 4, "address": "2 Hampstead Rd, Maidstone VIC 3012", "lat": -37.7852, "lng": 144.8777},
+  {"name": "Guardian Braybrook", "cost": 2, "education": 4, "staff": 4, "facilities": 4, "reputation": 4, "nqs": 4, "address": "1/2-6 South Rd, Braybrook VIC 3019", "lat": -37.7790, "lng": 144.8686},
+  {"name": "Genius Altona North", "cost": 1, "education": 4, "staff": 4, "facilities": 5, "reputation": 4, "nqs": 4, "address": "1/216 Blackshaws Rd, Altona North VIC 3025", "lat": -37.8424, "lng": 144.8515},
+  {"name": "Paisley Park SK", "cost": 1, "education": 4, "staff": 4, "facilities": 5, "reputation": 4, "nqs": 3, "address": "2/290 Blackshaws Rd, Altona North VIC 3025", "lat": -37.8417, "lng": 144.8495},
+  {"name": "Inventors of the Future", "cost": 3, "education": 4, "staff": 4, "facilities": 4, "reputation": 3, "nqs": 4, "address": "2-6 Techno Park Dr, Williamstown VIC 3016", "lat": -37.8573, "lng": 144.8805},
+  {"name": "Headstart Altona North", "cost": 3, "education": 3, "staff": 3, "facilities": 3, "reputation": 4, "nqs": 4, "address": "2-6 Kimpton Way, Altona North VIC 3025", "lat": -37.8414, "lng": 144.8479},
+  {"name": "Goodstart Altona", "cost": 1, "education": 3, "staff": 4, "facilities": 3, "reputation": 4, "nqs": 4, "address": "2-4 May Ave, Altona VIC 3018", "lat": -37.8699, "lng": 144.8302},
+  {"name": "Kids by the Bay", "cost": 1, "education": 3, "staff": 3, "facilities": 4, "reputation": 3, "nqs": 3, "address": "9-13 High St, Williamstown VIC 3016", "lat": -37.8587, "lng": 144.8945}
 ]

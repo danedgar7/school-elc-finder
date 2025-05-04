@@ -1,7 +1,10 @@
-import * as React from "react"
-import { Slider } from "./components/ui/slider"
-import { Card } from "./components/ui/card"
-import { ResultsChart } from "./components/ui/results-chart"
+import * as React from "react";
+import { DashboardSidebar } from "./components/dashboard/DashboardSidebar";
+import { SchoolRankings } from "./components/dashboard/SchoolRankings";
+import { SchoolMap } from "./components/dashboard/SchoolMap";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const CRITERIA = [
   { key: "cost", label: "Cost" },
@@ -23,19 +26,24 @@ type School = {
   facilities: number;
   reputation: number;
   nqs: number;
+  address: string;
+  lat: number;
+  lng: number;
 };
 
-function loadSchools(): School[] {
-  // This will be replaced with a fetch or import in a real app
-  return [
-    { id: 1, name: "Sunrise Early Learning Centre", cost: 7, education: 8, staff: 9, facilities: 8, reputation: 8, nqs: 9 },
-    { id: 2, name: "Bright Futures Preschool", cost: 6, education: 7, staff: 8, facilities: 7, reputation: 7, nqs: 8 },
-    { id: 3, name: "Little Explorers Academy", cost: 8, education: 9, staff: 8, facilities: 9, reputation: 9, nqs: 10 }
-  ];
+function useSchools(): School[] {
+  const [schools, setSchools] = React.useState<School[]>([]);
+  React.useEffect(() => {
+    fetch('/schools.json')
+      .then(res => res.json())
+      .then(data => {
+        setSchools(data.map((s: any, idx: number) => ({ id: idx + 1, ...s })));
+      });
+  }, []);
+  return schools;
 }
 
 function calculateScore(school: School, weights: Record<CriteriaKey, number>) {
-  // Weighted sum
   let sum = 0;
   let totalWeight = 0;
   for (const c of CRITERIA) {
@@ -45,8 +53,18 @@ function calculateScore(school: School, weights: Record<CriteriaKey, number>) {
   return totalWeight > 0 ? sum / totalWeight : 0;
 }
 
+function getInsights(topSchool: School | undefined, weights: Record<CriteriaKey, number>) {
+  if (!topSchool) return "No schools found.";
+  const important = Object.entries(weights)
+    .filter(([_, v]) => v > 0)
+    .sort((a, b) => b[1] - a[1])
+    .map(([k, _]) => CRITERIA.find(c => c.key === k)?.label)
+    .slice(0, 3)
+    .join(", ");
+  return `Based on your priorities, ${topSchool.name} ranks highest overall. You've placed equal importance on ${important}. The top ranked schools excel in these areas.`;
+}
+
 export default function App() {
-  const [started, setStarted] = React.useState(false);
   const [weights, setWeights] = React.useState<Record<CriteriaKey, number>>({
     cost: 5,
     education: 5,
@@ -55,66 +73,90 @@ export default function App() {
     reputation: 5,
     nqs: 5
   });
-
-  const schools = loadSchools();
-
+  const schools = useSchools();
   const results = React.useMemo(() => {
     return schools
       .map(s => ({ ...s, score: calculateScore(s, weights) }))
       .sort((a, b) => b.score - a.score);
   }, [schools, weights]);
 
-  if (!started) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-8 bg-gray-50 dark:bg-gray-900">
-        <h1 className="text-3xl font-bold mb-4">School/ELC Finder</h1>
-        <p className="mb-8 text-lg text-gray-600 dark:text-gray-300 max-w-xl text-center">
-          Find the best School or Early Learning Centre for your child by weighting what matters most to you.
-        </p>
-        <button
-          className="px-6 py-3 rounded bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-          onClick={() => setStarted(true)}
-        >
-          Start Assessment
-        </button>
-      </div>
-    );
-  }
+  const handleSliderChange = (key: string, value: number) => {
+    setWeights(w => ({ ...w, [key]: value }));
+  };
+
+  const insights = getInsights(results[0], weights);
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Set Your Priorities</h2>
-      <div className="mb-8">
-        {CRITERIA.map(c => (
-          <Slider
-            key={c.key}
-            value={weights[c.key]}
-            min={0}
-            max={10}
-            step={1}
-            label={c.label}
-            onChange={val => setWeights(w => ({ ...w, [c.key]: val }))}
-          />
-        ))}
-      </div>
-      <h2 className="text-xl font-semibold mb-2">Results</h2>
-      <div className="w-full max-w-lg mb-8">
-        <ResultsChart data={results.map(s => ({ name: s.name, score: s.score }))} />
-      </div>
-      <div className="flex flex-col gap-6">
-        {results.map(school => (
-          <Card key={school.id} title={school.name}>
-            <div className="flex flex-wrap gap-4 mb-2">
-              {CRITERIA.map(c => (
-                <div key={c.key} className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
-                  {c.label}: <span className="font-semibold">{school[c.key]}</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-2 font-bold">Score: {school.score.toFixed(2)}</div>
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="w-full flex items-center justify-between px-10 py-6 bg-card shadow-lg">
+        <h1 className="text-4xl font-bold tracking-tight">School/ELC Finder Dashboard</h1>
+        <div className="flex gap-4 items-center">
+          <button className="rounded-full p-2 hover:bg-accent">
+            <span className="material-icons">settings</span>
+          </button>
+          <button className="rounded-full p-2 hover:bg-accent">
+            <span className="material-icons">account_circle</span>
+          </button>
+        </div>
+      </header>
+      <main className="px-8 py-12 grid grid-cols-[400px_1fr] gap-16">
+        <aside className="flex flex-col gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Analysis & Criteria</CardTitle>
+              <CardDescription>
+                Insights and assessment sliders for your school ranking preferences.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <DashboardSidebar
+                insights={insights}
+                weights={weights}
+                onChange={handleSliderChange}
+                criteria={CRITERIA as any}
+              />
+            </CardContent>
           </Card>
-        ))}
-      </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Add School</CardTitle>
+              <CardDescription>
+                Enter a school website URL to fetch details.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Input id="school-url" placeholder="https://www.example-school.com" />
+              </div>
+              <Button className="w-full">Fetch School Info</Button>
+            </CardContent>
+          </Card>
+        </aside>
+        <section className="flex flex-col gap-10">
+          <Card>
+            <CardHeader>
+              <CardTitle>School Rankings</CardTitle>
+              <CardDescription>
+                Schools ranked by weighted score based on your criteria.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <SchoolRankings results={results.map(s => ({ name: s.name, score: s.score }))} />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>School Locations</CardTitle>
+              <CardDescription>
+                Geographic distribution of schools with score indicators.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <SchoolMap schools={results} />
+            </CardContent>
+          </Card>
+        </section>
+      </main>
     </div>
   );
 }
