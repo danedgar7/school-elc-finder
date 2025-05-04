@@ -5,6 +5,7 @@ import { SchoolMap } from "./components/dashboard/SchoolMap";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Settings, User } from 'lucide-react'; // Import lucide icons
 
 const CRITERIA = [
   { key: "cost", label: "Cost" },
@@ -88,14 +89,17 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="w-full flex items-center justify-between px-10 py-6 bg-card shadow-lg">
-        <h1 className="text-4xl font-bold tracking-tight">School/ELC Finder Dashboard</h1>
+      {/* Reduce vertical padding from py-6 to py-4 */}
+      <header className="w-full flex items-center justify-between px-10 py-4 bg-card shadow-lg">
+        <h1 className="text-4xl font-bold tracking-tight">School Scout</h1>
         <div className="flex gap-4 items-center">
           <button className="rounded-full p-2 hover:bg-accent">
-            <span className="material-icons">settings</span>
+            {/* Use Lucide Settings icon */}
+            <Settings className="w-6 h-6" />
           </button>
           <button className="rounded-full p-2 hover:bg-accent">
-            <span className="material-icons">account_circle</span>
+            {/* Use Lucide User icon */}
+            <User className="w-6 h-6" />
           </button>
         </div>
       </header>
@@ -104,9 +108,9 @@ export default function App() {
           <Card>
             <CardHeader>
               <CardTitle>Analysis & Criteria</CardTitle>
-              <CardDescription>
+              {/* <CardDescription>
                 Insights and assessment sliders for your school ranking preferences.
-              </CardDescription>
+              </CardDescription> */}
             </CardHeader>
             <CardContent>
               <DashboardSidebar
