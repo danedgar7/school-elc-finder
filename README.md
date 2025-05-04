@@ -1,6 +1,6 @@
-# School/ELC Finder MVP
+# School Scout
 
-This is the MVP for the School/ELC Finder Application. It allows parents to compare schools and early learning centres based on personalized criteria weightings.
+This is the MVP for the School Scout Application. It allows parents to compare schools and early learning centres based on personalized criteria weightings.
 
 ## Features (MVP)
 - Homepage with introduction and "Start Assessment" CTA
@@ -16,6 +16,8 @@ This is the MVP for the School/ELC Finder Application. It allows parents to comp
 - Tailwind CSS
 - shadcn/ui (Slider, Card, Chart, Input, Button, Label)
 - Recharts (for charts)
+- Leaflet + react-leaflet (for map display)
+- lucide-react (for icons)
 
 ## Getting Started
 1. Clone the repository
@@ -36,6 +38,9 @@ This is the MVP for the School/ELC Finder Application. It allows parents to comp
   - Removed numeric values from sliders
   - Added header labels ('Don't Care' / 'High Priority') above sliders
 - Added 'Add School' card UI placeholder to sidebar
+- Changed header title to "School Scout"
+- Updated map tiles to Stadia Maps Alidade Smooth Dark for better contrast
+- Replaced header text icons with `lucide-react` components
 
 ## Recommended Next Steps
 - Implement logic for 'Add School' card (fetch data from URL)

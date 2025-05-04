@@ -1,5 +1,5 @@
 # Project Tasks Breakdown
-# School/ELC Finder Application
+# School Scout Application
 
 This document provides a comprehensive breakdown of all tasks required to build the School/ELC Finder application. Tasks are organized hierarchically by phase and functional area.
 
