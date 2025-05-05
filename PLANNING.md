@@ -81,32 +81,38 @@ This application aims to transform this complex decision-making process into a d
 
 ### Technical Requirements
 
-1. **Frontend**
-   - React application with modern component architecture
-   - shadcn/ui design system implementation
-   - Responsive design for all device types
-   - Optimized performance for slider interactions
+1.  **Frontend**
+    *   React application with modern component architecture (using Vite)
+    *   TypeScript for type safety
+    *   shadcn/ui design system implementation
+    *   Tailwind CSS for styling
+    *   Responsive design for all device types
+    *   Map integration using Leaflet/react-leaflet
+    *   Charting using Recharts/shadcn charts
+    *   Optimized performance for slider interactions
+    *   Jest/React Testing Library for testing
 
-2. **Backend**
-   - Fast, scalable database architecture
-   - RESTful API design
-   - OpenAI API integration
-   - Authentication system (for saved preferences)
+2.  **Backend** (Future Phase - Currently Frontend Only)
+    *   TBD (Potentially Node.js/Express or Next.js API routes if needed)
+    *   RESTful API design
+    *   OpenAI API integration
+    *   Authentication system (for saved preferences)
 
-3. **Data Processing**
-   - Efficient algorithms for pairwise comparisons
-   - Real-time calculation engine
-   - Caching strategy for performance optimization
+3.  **Data Processing**
+    *   Efficient algorithms for pairwise comparisons
+    *   Real-time calculation engine
+    *   Caching strategy for performance optimization
+    *   Initial data processing via Python script (`generate_json.py`). Core comparison logic implemented in frontend JavaScript/TypeScript.
 
-4. **Security & Privacy**
-   - User data protection
-   - API key security
-   - GDPR/CCPA compliance where applicable
+4.  **Security & Privacy**
+    *   User data protection
+    *   API key security
+    *   GDPR/CCPA compliance where applicable
 
-5. **Performance**
-   - <200ms response time for slider adjustments
-   - <2s load time for initial page render
-   - <5s processing time for new school URL analysis
+5.  **Performance**
+    *   <200ms response time for slider adjustments
+    *   <2s load time for initial page render
+    *   <5s processing time for new school URL analysis
 
 ## UI/UX Requirements
 
@@ -182,20 +188,21 @@ This application aims to transform this complex decision-making process into a d
 ## Implementation Considerations
 
 ### Technology Stack
-- **Frontend**: React, TypeScript, shadcn/ui
-- **Backend**: Node.js/Express or Next.js API routes
-- **Database**: MongoDB or PostgreSQL
-- **Analysis Engine**: Port of Python algorithm (analysis.py) to JavaScript
-- **APIs**: OpenAI API
-- **Hosting/Deployment**: Vercel or AWS
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Recharts, Leaflet, react-leaflet, Jest, React Testing Library
+- **Backend**: TBD (Potentially Node.js/Express or Next.js API routes if needed)
+- **Database**: TBD (Currently uses static `schools.json` file)
+- **Data Processing**: Initial data processing via Python script (`generate_json.py`). Core comparison logic implemented in frontend JavaScript/TypeScript.
+- **APIs**: TBD (OpenAI potentially in future phase)
+- **Hosting/Deployment**: TBD (Vercel/Netlify suitable for static/frontend)
 
 ### Development Phases
 
-#### Phase 1: MVP
-- Core comparison engine
-- Basic UI with sliders
-- Pre-loaded school database
-- Simple visualizations
+#### Phase 1: MVP (Largely Complete)
+- Core comparison engine (implemented in frontend)
+- Basic UI with sliders, cards, chart, map (implemented)
+- Pre-loaded school database (via `schools.json` generated from CSV)
+- Simple visualizations (chart and map implemented)
+- Basic testing setup (Jest/RTL configured)
 
 #### Phase 2: Enhanced Features
 - Advanced visualizations

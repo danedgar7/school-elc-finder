@@ -21,16 +21,16 @@ export function AssessmentCriteria({ weights, onChange, criteria }: CriteriaProp
 
       {/* Slider Rows */}
       {criteria.map(c => (
-        <div key={c.key} className="grid grid-cols-[auto_1fr] items-center gap-1">
+        <div key={c.key} className="grid grid-cols-[auto_1fr] items-center gap-1 my-2">
           <Label className="text-sm w-28">{c.label}:</Label>
           <div className="flex-1 pr-1">
             <Slider
-              value={weights[c.key]}
+              value={[weights[c.key]]} 
               min={0}
               max={10}
               step={1}
-              label={undefined}
-              onChange={val => onChange(c.key, val)}
+              onValueChange={(val: number[]) => onChange(c.key, val[0])} 
+              aria-label={`${c.label} weight`} 
             />
           </div>
         </div>

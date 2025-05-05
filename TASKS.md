@@ -6,12 +6,12 @@ This document provides a comprehensive breakdown of all tasks required to build 
 ## 1. Project Setup & Planning
 
 ### 1.1 Environment Setup
-- [ ] 1.1.1 Create GitHub repository
-- [ ] 1.1.2 Set up project structure
-- [ ] 1.1.3 Configure build system (Vite recommended)
-- [ ] 1.1.4 Set up linting and formatting (ESLint, Prettier)
-- [ ] 1.1.5 Configure TypeScript
-- [ ] 1.1.6 Set up testing framework (Jest, React Testing Library)
+- [x] 1.1.1 Create GitHub repository
+- [x] 1.1.2 Set up project structure
+- [x] 1.1.3 Configure build system (Vite recommended)
+- [x] 1.1.4 Set up linting and formatting (ESLint, Prettier)
+- [x] 1.1.5 Configure TypeScript
+- [x] 1.1.6 Set up testing framework (Jest, React Testing Library)
 
 ### 1.2 Design Planning
 - [x] 1.2.1 Review existing criteria from provided files (Cost, Education, Staff, Facilities, Reputation, NQS)
@@ -25,8 +25,8 @@ This document provides a comprehensive breakdown of all tasks required to build 
 - [x] 1.3.1 Define data models (based on centre_scores.csv structure)
 - [ ] 1.3.2 Design database schema
 - [ ] 1.3.3 Plan API endpoints
-- [ ] 1.3.4 Design state management approach
-- [ ] 1.3.5 Document technical requirements
+- [x] 1.3.4 Design state management approach (React Context/State)
+- [x] 1.3.5 Document technical requirements (in PLANNING.md)
 
 ## 2. Database Implementation
 
@@ -45,8 +45,8 @@ This document provides a comprehensive breakdown of all tasks required to build 
 - [ ] 2.2.5 Implement validation rules (ensure scores are 1-5)
 
 ### 2.3 Data Population
-- [ ] 2.3.1 Create data import scripts
-- [x] 2.3.2 Import initial School/ELC dataset (from centre_scores.csv with 24 ELCs) // Complete: data loaded dynamically into the app
+- [x] 2.3.1 Create data import scripts (`generate_json.py` created)
+- [x] 2.3.2 Import initial School/ELC dataset (`generate_json.py` script populates `app/schools.json` from `centre_scores.csv`)
 - [ ] 2.3.3 Import assessment criteria data (6 criteria with default weights of 1)
 - [ ] 2.3.4 Verify data integrity
 - [ ] 2.3.5 Create seed data for development
@@ -87,10 +87,11 @@ This document provides a comprehensive breakdown of all tasks required to build 
 
 ### 4.1 UI Implementation
 - [x] 4.1.1 Develop Homepage Layout
-- [x] 4.1.2 Implement Assessment UI (Sliders, Criteria)
+- [~] 4.1.2 Implement Assessment UI (Sliders, Criteria)
+  - [x] 4.1.2.1 Make header buttons functional (Settings, User)
 - [x] 4.1.3 Design Results Page Layout
 - [ ] 4.1.4 Develop School/ELC Details Modal/Page UI
-- [ ] 4.1.5 Implement Comparison Chart UI (using shadcn/ui)
+- [x] 4.1.5 Implement Comparison Chart UI (using shadcn/ui)
 - [x] 4.1.6 Refine Assessment Criteria sidebar UI (Spacing, Text, Labels)
 - [x] 4.1.7 Add 'Add School' Card UI
 
@@ -103,26 +104,36 @@ This document provides a comprehensive breakdown of all tasks required to build 
 - [x] 4.2.6 Implement Button component (using shadcn/ui)
 - [x] 4.2.7 Implement Label component (using shadcn/ui)
 
-### 4.3 State Management
-- [ ] 4.3.1 Implement state logic for assessment criteria weights
-- [ ] 4.3.2 Create schools data state
-- [ ] 4.3.3 Build analysis results state
-- [ ] 4.3.4 Implement user preferences state
-- [ ] 4.3.5 Create loading/error states
+### 4.3 Multi-Page Navigation & Core Pages
+- [x] 4.3.1 Setup react-router-dom
+- [x] 4.3.2 Create basic page components (Dashboard, Schools, Tasks, News, About)
+- [x] 4.3.3 Refactor App.tsx and MainLayout.tsx for nested routing
+- [x] 4.3.4 Add navigation links to Header component
+- [x] 4.3.5 Implement basic placeholder content for SchoolsPage (Card grid)
+- [x] 4.3.6 Implement basic placeholder content for TasksPage (Table)
+- [x] 4.3.7 Implement basic placeholder content for NewsPage (Card feed)
+- [x] 4.3.8 Implement basic placeholder content for AboutPage (Card + Background)
 
-### 4.4 Visualization Components
-- [x] 4.4.1 Implement ranking visualization (similar to sample_ranking_equal_weights.csv) // Complete
-- [ ] 4.4.2 Create comparison chart components (similar to composite_bar_equal_weights.png)
-- [ ] 4.4.3 Build radar/spider chart for criteria comparison across ELCs
-- [ ] 4.4.4 Develop detailed ELC profile view showing all scores
-- [ ] 4.4.5 Implement insights display components
+### 4.4 State Management
+- [ ] 4.4.1 Implement state logic for assessment criteria weights
+- [ ] 4.4.2 Create schools data state
+- [ ] 4.4.3 Build analysis results state
+- [ ] 4.4.4 Implement user preferences state
+- [ ] 4.4.5 Create loading/error states
 
-### 4.5 Interactive Features
-- [ ] 4.5.1 Implement real-time slider updates
-- [ ] 4.5.2 Create drag-and-drop functionality (if applicable)
-- [ ] 4.5.3 Build filtering and sorting controls
-- [ ] 4.5.4 Implement save/share functionality
-- [ ] 4.5.5 Add animations and transitions
+### 4.5 Visualization Components
+- [x] 4.5.1 Implement ranking visualization (similar to sample_ranking_equal_weights.csv) // Complete
+- [ ] 4.5.2 Create comparison chart components (similar to composite_bar_equal_weights.png)
+- [ ] 4.5.3 Build radar/spider chart for criteria comparison across ELCs
+- [ ] 4.5.4 Develop detailed ELC profile view showing all scores
+- [ ] 4.5.5 Implement insights display components
+
+### 4.6 Interactive Features
+- [ ] 4.6.1 Implement real-time slider updates
+- [ ] 4.6.2 Create drag-and-drop functionality (if applicable)
+- [ ] 4.6.3 Build filtering and sorting controls
+- [ ] 4.6.4 Implement save/share functionality
+- [ ] 4.6.5 Add animations and transitions
 
 ## 5. Integration & Testing
 
@@ -134,11 +145,11 @@ This document provides a comprehensive breakdown of all tasks required to build 
 - [ ] 5.1.5 Implement real-time updates
 
 ### 5.2 Unit Testing
-- [ ] 5.2.1 Write tests for analysis algorithms
-- [ ] 5.2.2 Create tests for API endpoints
-- [ ] 5.2.3 Implement tests for React components
-- [ ] 5.2.4 Test state management
-- [ ] 5.2.5 Test OpenAI integration
+- [x] 5.2.1 Set up Jest and React Testing Library
+- [x] 5.2.2 Write basic tests for core components (e.g., AssessmentCriteria)
+- [ ] 5.2.3 Write tests for utility functions
+- [ ] 5.2.4 Write tests for state management logic
+- [ ] 5.2.5 Achieve target code coverage (e.g., 70%)
 
 ### 5.3 Integration Testing
 - [ ] 5.3.1 Test end-to-end user flows

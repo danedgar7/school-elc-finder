@@ -1,4 +1,3 @@
-
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -17,14 +16,14 @@ interface SchoolMapProps {
 
 export function SchoolMap({ schools }: SchoolMapProps) {
   // Default center: Newport, VIC
-  // Default center: Newport, VIC
   const center: [number, number] = [-37.84, 144.88]; // Explicitly type as a tuple
   return (
     <div className="w-full h-96 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-md">
       <MapContainer center={center} zoom={13} scrollWheelZoom={true} style={{ height: "100%", width: "100%" }}>
         <TileLayer
-          attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          // Use Stadia Maps Alidade Smooth Dark tiles
+          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+          url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         />
         {schools.map(school => (
           <Marker key={school.id} position={[school.lat, school.lng]}>

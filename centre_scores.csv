@@ -1,25 +1,8 @@
-Centre,Cost,Education,Staff,Facilities,Reputation,NQS
-Westbourne Amici,5,5,5,5,5,5
-OAC Williamstown,3,5,5,5,5,5
-Clare Court ELC,4,5,5,4,5,5
-St Michael's Grammar ELC,2,5,5,5,5,5
-Wesley ECLC,2,5,5,5,5,5
-Home Road Kindergarten,5,4,5,3,5,5
-Emma McLean,5,4,5,3,5,5
-South Kingsville Preschool,5,4,5,3,5,5
-Explorers Williamstown,4,5,4,5,4,5
-Newport Lakes,4,4,5,4,5,5
-Haileybury City ELC,1,5,5,5,5,5
-OAC Newport,2,5,5,5,4,4
-Learning Sanctuary Spotswood,3,4,4,5,5,4
-Eden Academy Newport,4,4,4,4,5,4
-Newport Gardens,4,4,4,4,4,4
-The Range Children's,5,3,4,3,5,4
-Guardian Maidstone,2,4,4,4,4,4
-Guardian Braybrook,2,4,4,4,4,4
-Genius Altona North,1,4,4,5,4,4
-Paisley Park SK,1,4,4,5,4,3
-Inventors of the Future,3,4,4,4,3,4
-Headstart Altona North,3,3,3,3,4,4
-Goodstart Altona,1,3,4,3,4,4
-Kids by the Bay,1,3,3,4,3,3
+Centre,Cost,Education,Staff,Facilities,Reputation,NQS,Address,Latitude,Longitude,Summary,Strength,Indicative Fees,NQS_actual,Cost_expl,Education_expl,Staff_expl,Facilities_expl,Reputation_expl,NQS_expl,Fee_per_day
+Westbourne Amici,5,5,5,5,5,5,"300 Parker St, Williamstown VIC 3016",-37.8596,144.8876,Long-day-care centre; Reggio Emilia provocations & sustainability. Rated exceeding nqs. Signature: Reggio pedagogy inside leading independent school.,Reggio pedagogy inside leading independent school.,$122/day,Exceeding NQS,Daily fees $122/day.,Reggio Emilia provocations & sustainability; Prep transition.,Degree-qualified Reggio educators.,Spacious studios to landscaped gardens & kitchen garden.,Limited places; academic culture.,Exceeding NQS,122.0
+OAC Williamstown,3,5,5,5,5,5,"1 Thompson St, Williamstown VIC 3016",-37.8625,144.8924,"LDC centre; Proprietary “Grow” curriculum – whole-child, play-based.. Rated exceeding nqs. Signature: Allied-health integration & holistic school-readiness.",Allied-health integration & holistic school-readiness.,≈,Exceeding NQS,Daily fees ≈ $150/day.,"Proprietary “Grow” curriculum – whole-child, play-based.",Highly qualified educators & allied-health specialists.,"Purpose-built campus, expansive outdoor areas, dietitian-designed menus.","Nurturing, home-like atmosphere; strong retention.",Exceeding NQS,150.0
+Clare Court ELC,4,5,5,4,5,5,"14 Clare St, Yarraville VIC 3013",-37.8187,144.8859,"LDC & family hub centre; Reggio-inspired, project-based. Rated exceeding nqs. Signature: Leader in innovative pedagogy & wrap-around care.",Leader in innovative pedagogy & wrap-around care.,Mid,Exceeding NQS,Daily fees Mid.,"Reggio-inspired, project-based; integrated family services.",Expert Gowrie educators & allied supports.,"Inviting ateliers, water pumps, community meeting areas.",Strong inclusion & documentation practices.,Exceeding NQS,140.0
+St Michael's Grammar ELC,2,5,5,5,5,5,"25 Chapel St, St Kilda VIC 3182",-37.8603,144.9785,Sessional kindergarten + Extended Tuition centre; Inqu<truncated 9238 bytes>Dr, Williamstown VIC 3016",-37.8573,144.8805,LDC centre; STEM-focused play-based program with Bush Kinder.. Rated meeting nqs. Signature: Early STEM orientation & outdoor learning.,Early STEM orientation & outdoor learning.,$145/day,Meeting NQS,Daily fees $145/day.,STEM-focused play-based program with Bush Kinder.,"Stable, qualified team encouraging inquiry.","Science corners, tinkering stations, garden beds.",Stimulating activities; some admin comms feedback.,Meeting NQS,145.0
+Headstart Altona North,3,3,3,3,4,4,"2-6 Kimpton Way, Altona North VIC 3025",-37.8414,144.8479,LDC centre; Structured play with literacy & numeracy focus.. Rated meeting nqs. Signature: Reliable option with inclusive philosophy.,Reliable option with inclusive philosophy.,$130-150/day,Meeting NQS,Daily fees $130-150/day.,Structured play with literacy & numeracy focus.,Caring team; good parent communication.,Medium-sized centre with smartboard kinder room.,Children settle well; facilities recently refreshed.,Meeting NQS,140.0
+Goodstart Altona,1,3,4,3,4,4,"2-4 May Ave, Altona VIC 3018",-37.8699,144.8302,Not-for-profit LDC centre; EYLF play-based. Rated meeting nqs. Signature: Dependable care with reinvested profits.,Dependable care with reinvested profits.,$162/day,Meeting NQS,Daily fees $162/day.,EYLF play-based; inclusive key-educator approach.,"Experienced, stable team; ongoing PD.","Homely centre, big tree & veggie garden.",Friendly & affordable; social enterprise ethos.,Meeting NQS,162.0
+Kids by the Bay,1,3,3,4,3,3,"9-13 High St, Williamstown VIC 3016",-37.8587,144.8945,"LDC centre; Play-based with school-readiness theme & bay inspiration.. Rated not yet rated. Signature: Brand-new, well-designed environment close to beach.","Brand-new, well-designed environment close to beach.","$150-170/day",Not yet rated,Daily fees $150-170/day.,Play-based with school-readiness theme & bay inspiration.,New enthusiastic team building reputation.,Purpose-built 2020 facility near waterfront.,Mixed early reviews; modern resources lauded.,Not yet rated,160.0
