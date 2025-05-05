@@ -3,6 +3,49 @@
 
 This document provides a comprehensive breakdown of all tasks required to build the School/ELC Finder application. Tasks are organized hierarchically by phase and functional area.
 
+*(For detailed product requirements, user journeys, and initial planning, refer to [PLANNING.md](./PLANNING.md). For the detailed technical architecture, see [SOLUTION_ARCH.md](./SOLUTION_ARCH.md). Please ensure phase names and overall scope remain synchronized across these documents.)*
+
+## High-Level Project Plan
+
+```mermaid
+gantt
+    dateFormat  YYYY-MM-DD
+    title School Scout Development Phases
+    excludes    weekends
+
+    section Phase 1: MVP Refinement
+    MVP Core Features  :active, p1, 2025-05-01, 14d
+    UI/UX Polish       :p2, after p1, 7d
+    Testing Expansion  :p3, after p1, 10d
+
+    section Phase 2: Backend & Core Enhancements
+    Backend Setup      :p4, after p3, 14d
+    Database Migration :p5, after p4, 7d
+    User Accounts      :p6, after p5, 10d
+    Advanced Viz       :p7, after p6, 7d
+
+    section Phase 3: Advanced Features
+    AI Integration     :p8, after p7, 14d
+    URL Analysis       :p9, after p8, 10d
+    Expanded DB        :p10, after p9, 7d
+    Sharing Features   :p11, after p10, 5d
+
+    section Phase 4: Scale & Optimize
+    Performance Opt.   :p12, after p11, 10d
+    Monitoring Setup   :p13, after p12, 7d
+    Security Harden    :p14, after p13, 7d
+
+    section Phase 5: Deployment & Launch
+    Infrastructure     :p15, after p14, 7d
+    CI/CD              :p16, after p15, 5d
+    Deployment         :p17, after p16, 3d
+
+    section Phase 6: Post-Launch
+    Feedback Collection :p18, after p17, 14d
+    Iteration 1        :p19, after p18, 14d
+```
+*Note: Dates are illustrative and represent relative sequencing and effort.* 
+
 ## 1. Project Setup & Planning
 
 ### 1.1 Environment Setup

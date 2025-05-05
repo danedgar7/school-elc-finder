@@ -28,6 +28,54 @@ This is the MVP for the School Scout Application. It allows parents to compare s
 5. Run the development server: `npm run dev` (inside the `app` directory)
 6. Run tests: `npm run test` (inside the `app` directory)
 
+## Architecture Overview
+
+*(Note: This diagram is replicated from the detailed [SOLUTION_ARCH.md](./SOLUTION_ARCH.md). Please ensure any updates are synchronized between both files.)*
+
+### High-Level Architecture (Target State)
+
+```mermaid
+graph TD
+    subgraph "Client Layer"
+        UI[User Interface]
+        State[State Management]
+        Routing[Routing]
+    end
+    
+    subgraph "Application Layer"
+        CompEngine[Comparison Engine]
+        DataViz[Data Visualization]
+        SchoolMgmt[School Management]
+        AIIntegration[AI Integration]
+    end
+    
+    subgraph "Data Layer"
+        API[API Gateway]
+        DB[(Database)]
+        Cache[(Cache)]
+    end
+    
+    subgraph "External Services"
+        OpenAI[OpenAI API]
+        Maps[Maps API]
+    end
+    
+    UI <--> State
+    UI <--> Routing
+    State <--> CompEngine
+    State <--> DataViz
+    State <--> SchoolMgmt
+    SchoolMgmt <--> AIIntegration
+    CompEngine <--> API
+    DataViz <--> API
+    SchoolMgmt <--> API
+    AIIntegration <--> API
+    API <--> DB
+    API <--> Cache
+    AIIntegration <--> OpenAI
+    DataViz <--> Maps
+```
+
 ## Directory Structure
 - `app/` - Main application code (React frontend)
   - `schools.json` - School/ELC data used by the app

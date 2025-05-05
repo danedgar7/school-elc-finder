@@ -32,19 +32,75 @@ This application aims to transform this complex decision-making process into a d
 
 ### Journey 1: Initial Assessment
 1. User lands on the application homepage
-2. User explores pre-loaded school/ELC options
-3. User adjusts criteria sliders based on personal priorities
-4. Application instantly recalculates and updates analysis
-5. User reviews personalized school rankings and insights
-6. User saves or shares their personalized analysis
+2. User navigates to the assessment section
+3. User adjusts sliders to reflect their priorities for each criterion
+4. Application dynamically updates the ranked list of schools/ELCs based on the weighted criteria
+5. User sees the top-ranked institutions displayed visually (cards, chart, map)
 
-### Journey 2: Adding New School Options
-1. User finds a school website not included in the database
-2. User pastes the URL into the application
-3. Application uses OpenAI API to analyze the new school
-4. New school is added to the comparison
-5. Analysis updates with the new option included
-6. User adjusts criteria to see how the new school compares
+```mermaid
+sequenceDiagram
+    participant User
+    participant HomePage
+    participant AssessmentUI
+    participant ResultsDisplay
+    participant ComparisonEngine
+    participant SchoolData
+
+    User->>HomePage: Visits App
+    HomePage->>User: Shows Intro & CTA
+    User->>AssessmentUI: Navigates to Assessment
+    AssessmentUI->>User: Displays Criteria Sliders
+    User->>AssessmentUI: Adjusts Slider Weights
+    AssessmentUI->>ComparisonEngine: Sends Updated Weights
+    ComparisonEngine->>SchoolData: Fetches School Scores
+    SchoolData->>ComparisonEngine: Returns Scores
+    ComparisonEngine->>ComparisonEngine: Calculates Weighted Rankings
+    ComparisonEngine->>ResultsDisplay: Sends Ranked List
+    ResultsDisplay->>User: Updates Cards, Chart, Map
+```
+
+### Journey 2: Refining and Exploring Results
+1. User reviews the initial ranked list
+2. User clicks on a school/ELC card to view more details (modal or separate page)
+3. User interacts with the map to see school locations
+4. User interacts with the chart to understand comparative performance
+5. User potentially uses a placeholder 'Add School' feature (future state: triggers URL analysis)
+6. User iterates by adjusting criteria weights further to refine the search
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant ResultsDisplay
+    participant SchoolDetails
+    participant MapComponent
+    participant ChartComponent
+    participant AssessmentUI
+    participant AddSchoolFeature
+
+    User->>ResultsDisplay: Reviews Ranked List
+    User->>ResultsDisplay: Clicks School Card
+    ResultsDisplay->>SchoolDetails: Requests Details
+    SchoolDetails->>User: Shows Detailed Info
+
+    User->>MapComponent: Interacts with Map
+    MapComponent->>User: Shows Locations/Popups
+
+    User->>ChartComponent: Interacts with Chart
+    ChartComponent->>User: Highlights Comparisons
+
+    User->>AddSchoolFeature: Clicks 'Add School' (MVP: Placeholder)
+    AddSchoolFeature->>User: Shows Input Field (Future: Trigger Analysis)
+
+    User->>AssessmentUI: Adjusts Slider Weights (Iteration)
+    AssessmentUI->>ResultsDisplay: Triggers Recalculation (See Journey 1)
+```
+
+### Journey 3: Adding a New School/ELC (Future State)
+1. User accesses the 'Add School' feature
+2. User inputs the URL of the school/ELC website
+3. Application triggers an analysis service (e.g., using OpenAI) to extract relevant information and score the school against the criteria
+4. The new school is added to the user's comparison set
+5. The results are updated to include the newly added school
 
 ## Functional Requirements
 
@@ -81,16 +137,62 @@ This application aims to transform this complex decision-making process into a d
 
 ### Technical Requirements
 
-1.  **Frontend**
-    *   React application with modern component architecture (using Vite)
-    *   TypeScript for type safety
-    *   shadcn/ui design system implementation
-    *   Tailwind CSS for styling
-    *   Responsive design for all device types
-    *   Map integration using Leaflet/react-leaflet
-    *   Charting using Recharts/shadcn charts
-    *   Optimized performance for slider interactions
-    *   Jest/React Testing Library for testing
+*(For a detailed technical architecture, please refer to [SOLUTION_ARCH.md](./SOLUTION_ARCH.md). Ensure diagrams and specifications are kept synchronized between these documents.)*
+
+#### Architecture Overview (Target State)
+
+```mermaid
+graph TD
+    subgraph "Client Layer"
+        UI[User Interface]
+        State[State Management]
+        Routing[Routing]
+    end
+    
+    subgraph "Application Layer"
+        CompEngine[Comparison Engine]
+        DataViz[Data Visualization]
+        SchoolMgmt[School Management]
+        AIIntegration[AI Integration]
+    end
+    
+    subgraph "Data Layer"
+        API[API Gateway]
+        DB[(Database)]
+        Cache[(Cache)]
+    end
+    
+    subgraph "External Services"
+        OpenAI[OpenAI API]
+        Maps[Maps API]
+    end
+    
+    UI <--> State
+    UI <--> Routing
+    State <--> CompEngine
+    State <--> DataViz
+    State <--> SchoolMgmt
+    SchoolMgmt <--> AIIntegration
+    CompEngine <--> API
+    DataViz <--> API
+    SchoolMgmt <--> API
+    AIIntegration <--> API
+    API <--> DB
+    API <--> Cache
+    AIIntegration <--> OpenAI
+    DataViz <--> Maps
+```
+
+#### Frontend Requirements
+- **Frontend**: React application with modern component architecture (using Vite)
+- **TypeScript**: For type safety
+- **shadcn/ui**: Design system implementation
+- **Tailwind CSS**: For styling
+- **Responsive design**: For all device types
+- **Map integration**: Using Leaflet/react-leaflet
+- **Charting**: Using Recharts/shadcn charts
+- **Optimized performance**: For slider interactions
+- **Jest/React Testing Library**: For testing
 
 2.  **Backend** (Future Phase - Currently Frontend Only)
     *   TBD (Potentially Node.js/Express or Next.js API routes if needed)
