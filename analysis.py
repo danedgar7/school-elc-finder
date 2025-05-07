@@ -1,7 +1,6 @@
-
 import pandas as pd, numpy as np
 CRITERIA = ["Cost","Education","Staff","Facilities","Reputation","NQS"]
-def load_data(path="centre_scores.csv"):
+def load_data(path="../centre_scores_enriched.csv"):
     return pd.read_csv(path)
 def compute_scores(df, weights):
     w = np.array([weights[c] for c in CRITERIA])

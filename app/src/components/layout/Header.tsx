@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'; // Import Button
 
 export function Header() {
   return (
-    <header className="w-full flex items-center justify-between px-10 py-4 bg-card shadow-lg">
+    <header className="sticky top-0 z-50 w-full flex items-center justify-between px-10 py-4 bg-card shadow-lg">
       <div className="flex items-center gap-8"> 
         <Link to="/" className="text-4xl font-bold tracking-tight hover:text-primary transition-colors">
           <h1>School Scout</h1>

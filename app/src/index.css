@@ -33,6 +33,14 @@
     --ring: 221.2 83.2% 53.3%;
  
     --radius: 0.5rem;
+
+    /* NQS Status Chart Colors */
+    --chart-1: 142.1 76.2% 36.3%; /* Green - Exceeding NQS */
+    --chart-2: 217.2 91.2% 59.8%; /* Blue - Meeting NQS */
+    --chart-3: 47.9 95.8% 53.1%;  /* Yellow - Working Towards NQS */
+    --chart-4: 24.6 95% 53.1%;   /* Orange - Significant Improvement Required */
+    --chart-5: 215 20.2% 65.1%;   /* Grey - Provisional Rating */
+    /* --muted is used for Awaiting/Unknown */
   }
  
   .dark {
@@ -63,6 +71,14 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 217.2 91.2% 59.8%;
+
+    /* NQS Status Chart Colors (Dark Mode) */
+    --chart-1: 142.1 70.6% 45.3%; /* Lighter Green */
+    --chart-2: 217.2 81.2% 69.8%; /* Lighter Blue */
+    --chart-3: 47.9 85.8% 63.1%;  /* Lighter Yellow */
+    --chart-4: 24.6 85% 63.1%;   /* Lighter Orange */
+    --chart-5: 215 20.2% 55.1%;   /* Darker Grey for Provisional */
+    /* --muted is used for Awaiting/Unknown */
   }
 }
 

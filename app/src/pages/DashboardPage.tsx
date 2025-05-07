@@ -1,44 +1,61 @@
 import * as React from 'react';
-import { SchoolRankings } from '../components/dashboard/SchoolRankings';
-import { SchoolMap } from '../components/dashboard/SchoolMap';
+import { SchoolRankings, type SchoolResult } from '../components/dashboard/SchoolRankings'; 
+import { SchoolMap, type School as MapSchool } from '../components/dashboard/SchoolMap'; 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
-// Define the School type (or import from a shared types file if it exists)
-// Duplicating temporarily - consider moving to types.ts
-type School = {
-  id: number;
+interface DashboardSchool {
+  id: string | number; 
   name: string;
-  cost: number;
-  education: number;
-  staff: number;
-  facilities: number;
-  reputation: number;
-  nqs: number;
-  address: string;
-  lat: number;
-  lng: number;
-  score?: number; // Add score if it's calculated and passed
-};
+  latitude?: number; 
+  longitude?: number; 
+  lat?: number;     
+  lng?: number;     
+  address?: string;   
+  suburb?: string;
+  postcode?: string;
+  score?: number; 
+  nqs_actual?: string | null; 
+  cost?: number;
+  education?: number;
+  staff?: number;
+  wellbeing?: number;
+  community?: number;
+}
 
 interface DashboardPageProps {
-  results: School[];
+  results: DashboardSchool[]; 
 }
 
 const DashboardPage: React.FC<DashboardPageProps> = ({ results }) => {
+
+  const rankingResults: SchoolResult[] = results.map(s => ({
+    name: s.name,
+    score: s.score ?? 0, // Provide default value of 0 for undefined scores
+    nqs_actual: s.nqs_actual ?? null
+  }));
+
+  const mapSchools: MapSchool[] = results
+    .filter(s => (s.lat !== undefined && s.lng !== undefined) || (s.latitude !== undefined && s.longitude !== undefined)) 
+    .map(s => {
+      const finalLat = s.lat ?? s.latitude ?? 0;
+      const finalLng = s.lng ?? s.longitude ?? 0;
+      return {
+        id: typeof s.id === 'string' ? parseInt(s.id, 10) : s.id, 
+        name: s.name,
+        address: s.address ?? 'Address not available', 
+        lat: finalLat, 
+        lng: finalLng, 
+        score: s.score 
+      };
+    })
+    .filter(s => !isNaN(s.id)); 
+
+
   return (
     <>
-      <Card>
-        <CardHeader>
-          <CardTitle>School Rankings</CardTitle>
-          <CardDescription>
-            Schools ranked by weighted score based on your criteria.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {/* Ensure results passed to SchoolRankings matches expected prop type */}
-          <SchoolRankings results={results.map(s => ({ name: s.name, score: s.score ?? 0 }))} />
-        </CardContent>
-      </Card>
+      <div className="col-span-1 lg:col-span-2">
+        <SchoolRankings results={rankingResults} />
+      </div>
       <Card>
         <CardHeader>
           <CardTitle>School Locations</CardTitle>
@@ -47,7 +64,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ results }) => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <SchoolMap schools={results} />
+          <SchoolMap schools={mapSchools} /> 
         </CardContent>
       </Card>
     </>

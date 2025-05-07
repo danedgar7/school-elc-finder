@@ -38,7 +38,10 @@ type School = {
   address: string;
   lat: number;
   lng: number;
-  status?: SchoolStatus; // Add optional status field
+  latitude?: number;
+  longitude?: number;
+  nqs_actual?: string | null;
+  status?: SchoolStatus; 
   score?: number;
 };
 
@@ -68,10 +71,14 @@ function useSchools(): School[] {
           staff: typeof s.staff === 'number' ? s.staff : 0,
           facilities: typeof s.facilities === 'number' ? s.facilities : 0,
           reputation: typeof s.reputation === 'number' ? s.reputation : 0,
-          nqs: typeof s.nqs === 'number' ? s.nqs : 0,
+          nqs: typeof s.nqs === 'number' ? s.nqs : 0, 
           address: typeof s.address === 'string' ? s.address : 'No Address Provided',
-          lat: typeof s.lat === 'number' ? s.lat : 0,
-          lng: typeof s.lng === 'number' ? s.lng : 0,
+          // Check for both 'lat'/'lng' and 'latitude'/'longitude' from raw data and convert strings to numbers
+          lat: typeof s.lat === 'number' ? s.lat : (typeof s.lat === 'string' ? parseFloat(s.lat) : (typeof s.latitude === 'number' ? s.latitude : (typeof s.latitude === 'string' ? parseFloat(s.latitude) : 0))), 
+          lng: typeof s.lng === 'number' ? s.lng : (typeof s.lng === 'string' ? parseFloat(s.lng) : (typeof s.longitude === 'number' ? s.longitude : (typeof s.longitude === 'string' ? parseFloat(s.longitude) : 0))),
+          latitude: typeof s.latitude === 'number' ? s.latitude : undefined, // Store original if available
+          longitude: typeof s.longitude === 'number' ? s.longitude : undefined, // Store original if available
+          nqs_actual: typeof s.nqs_actual === 'string' ? s.nqs_actual : null, 
           // status and score will be added later
         }));
         setSchools(formattedSchools);
@@ -153,12 +160,16 @@ function App() {
     status: ['None', 'Prioritised', 'Requested', 'Availability', 'No Availability'][index % 5] as SchoolStatus,
   }));
 
+  // --- REVERTING TEMPORARY DEBUGGING --- 
   // Calculate results based on current weights and schools with status
   const results = React.useMemo(() => {
-    return initialSchoolsWithStatus
+    const calculatedResults = initialSchoolsWithStatus
       .map(s => ({ ...s, score: calculateScore(s, weights) }))
       .sort((a, b) => b.score - a.score);
+    console.log(`App.tsx: Calculated ${calculatedResults.length} results`); // Keep this log for now
+    return calculatedResults;
   }, [initialSchoolsWithStatus, weights]);
+  // --- END REVERT --- 
 
   const handleSliderChange = (key: string, value: number) => {
     setWeights(w => ({ ...w, [key]: value }));
@@ -201,8 +212,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout sidebar={sidebarContent} />}>
-        <Route index element={<DashboardPage results={results} />} />
-        <Route path="schools" element={<SchoolsPage results={results} />} />
+        <Route index element={<DashboardPage results={results} />} /> 
+        <Route path="schools" element={<SchoolsPage results={results} />} /> 
         <Route path="tasks" element={<TasksPage />} />
         <Route path="news" element={<NewsPage />} />
         <Route path="about" element={<AboutPage />} />

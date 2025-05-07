@@ -65,7 +65,7 @@ gantt
 - [ ] 1.2.6 Design responsive layouts
 
 ### 1.3 Technical Architecture
-- [x] 1.3.1 Define data models (based on centre_scores.csv structure)
+- [x] 1.3.1 Define data models (based on `centre_scores_enriched.csv` structure)
 - [ ] 1.3.2 Design database schema
 - [ ] 1.3.3 Plan API endpoints
 - [x] 1.3.4 Design state management approach (React Context/State)
@@ -89,7 +89,7 @@ gantt
 
 ### 2.3 Data Population
 - [x] 2.3.1 Create data import scripts (`generate_json.py` created)
-- [x] 2.3.2 Import initial School/ELC dataset (`generate_json.py` script populates `app/schools.json` from `centre_scores.csv`)
+- [x] 2.3.2 Import initial School/ELC dataset (`generate_json.py` script populates `app/schools.json` from `../centre_scores_enriched.csv`)
 - [ ] 2.3.3 Import assessment criteria data (6 criteria with default weights of 1)
 - [ ] 2.3.4 Verify data integrity
 - [ ] 2.3.5 Create seed data for development
