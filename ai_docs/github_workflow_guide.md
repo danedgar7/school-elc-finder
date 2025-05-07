@@ -9,6 +9,7 @@ This guide provides a step-by-step workflow for developing features, fixing bugs
 - [Release Process](#release-process)
 - [Code Review Guidelines](#code-review-guidelines)
 - [Commit Message Format](#commit-message-format)
+- [LLM Coding Agent Prompts](#llm-coding-agent-prompts)
 
 ## Daily Development Workflow
 
@@ -261,3 +262,97 @@ docs(readme): update setup instructions
 ---
 
 This workflow is designed to keep the School Scout codebase organized, maintain high code quality, and provide a clear history of changes. Adjust as needed as the project evolves.
+
+## LLM Coding Agent Prompts
+
+The following prompts are designed for use with LLM coding agents (like Cascade, Claude, ChatGPT, etc.) to help automate common GitHub tasks in the School Scout development workflow.
+
+### 1. Preparing for New Feature Development
+
+```
+I need to start developing a new feature for the School Scout project. Please help me:
+
+1. Check the current status of my repository
+2. Make sure I'm on the dev branch and it's up to date
+3. Create a new feature branch following our naming convention
+4. Set up the initial structure for this feature
+
+The feature I want to implement is: [BRIEF DESCRIPTION OF FEATURE]
+
+It will involve changes to these components: [LIST COMPONENTS OR FILES]
+
+Please guide me through the exact Git commands I should run and any other preparation steps.
+```
+
+### 2. Testing a Feature in Development
+
+```
+I'm working on a feature branch called "feature/[BRANCH-NAME]" for the School Scout project. Please help me:
+
+1. Run the appropriate tests for the changes I've made
+2. Check for any linting or type errors
+3. Verify that my changes work as expected
+4. Prepare my code for a pull request
+
+The changes I've made are: [BRIEF DESCRIPTION OF CHANGES]
+
+These files have been modified: [LIST FILES]
+
+Please provide the commands I should run to test thoroughly, and any other verification steps I should take before submitting for review.
+```
+
+### 3. Merging Changes and Completing a Feature
+
+```
+I've completed development of a feature on branch "feature/[BRANCH-NAME]" for the School Scout project. The feature has been tested and is ready to merge. Please help me:
+
+1. Ensure my branch is up to date with the latest dev branch
+2. Resolve any potential merge conflicts
+3. Create a pull request with appropriate description
+4. Merge the changes after approval
+5. Clean up my local branches
+
+Feature summary: [BRIEF DESCRIPTION OF FEATURE]
+
+Key files changed: [LIST FILES]
+
+Please guide me through the exact process with Git commands and GitHub actions to properly complete this feature.
+```
+
+### 4. Handling an Urgent Bug Fix
+
+```
+I need to fix an urgent bug in the School Scout project. The bug is: [DESCRIBE BUG]
+
+It appears to be in: [FILE OR COMPONENT]
+
+Please help me:
+
+1. Create a proper bug fix branch from the appropriate source branch
+2. Make the necessary changes to fix the issue
+3. Test the fix thoroughly
+4. Create a pull request that clearly documents the bug and solution
+5. Merge the fix following our expedited process for critical bugs
+
+Please provide the specific Git commands and steps I should follow for this urgent fix.
+```
+
+### 5. Preparing for a Release
+
+```
+We're ready to prepare release v[VERSION] of the School Scout project. Please help me:
+
+1. Create a release branch from dev
+2. Run all tests and verification steps
+3. Update version numbers in relevant files
+4. Create release notes summarizing the changes
+5. Merge to main and tag the release
+
+Major features in this release: [LIST FEATURES]
+
+Bug fixes: [LIST BUGS FIXED]
+
+Please guide me through the complete release process with specific commands and actions.
+```
+
+These prompts can be customized with specific details about your feature, bug, or release to get more targeted assistance from an LLM coding agent.
